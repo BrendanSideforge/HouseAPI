@@ -30,7 +30,7 @@ app.use('/get_user_points', getUserPoints);
 app.use('/leaderboard', getLeaderboard);
 app.use('/house_members', getHouseMembers);
 
-app.listen(port, async () => {
-    console.log(`Server is now listening at: http://localhost:${port}`);
+app.listen(port, '144.172.75.88', async () => {
+    console.log(`Server is now listening at: http://144.172.75.88:${port}`);
     await database.createTables();
 })
