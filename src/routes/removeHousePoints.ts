@@ -8,7 +8,7 @@ const db: pg.Pool = database.pool;
 router.post('/:house', async (req, res) => {
 
     let params: object = req.params;
-    let json: object = req.headers;
+    let json: object = req.body;
 
     let queryString: string = "SELECT * FROM houses WHERE house=$1";
     let queryResults: any = await db.query(queryString, [params['house']]);

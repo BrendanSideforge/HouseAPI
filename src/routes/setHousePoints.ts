@@ -31,10 +31,10 @@ router.post('/:house', async (req, res) => {
     }
 
     let updateQuery: string = "UPDATE houses SET points=$2 WHERE house=$1";
-    await db.query(updateQuery, [params['house'], queryResults.rows[0]['points'] + +json['points']]);
+    await db.query(updateQuery, [params['house'], +json['points']]);
     res.send(JSON.stringify({
         house: params['house'],
-        points: queryResults.rows[0]['points'] + +json['points']
+        points: +json['points']
     }));
 
 })

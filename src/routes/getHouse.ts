@@ -10,14 +10,15 @@ router.get('/:house', async (req, res) => {
     let params: object = req.params;
     let queryString: string = "SELECT * FROM houses WHERE house=$1";
     let queryResults: any = await db.query(queryString, [params['house']]);
-    let memberQuery: string = "SELECT * FROM users WHERE house=$1";
-    let memberResults: any = await db.query(memberQuery, [params['house']]);
 
     if (queryResults.rows.length == 0) {
         res.send(JSON.stringify({
             error: 'That house is not found in the database.'
         }));
     }
+
+    let memberQuery: string = "SELECT * FROM users WHERE house=$1";
+    let memberResults: any = await db.query(memberQuery, [params['house']]);
 
     let objectUsers: Array<object> = [];
     

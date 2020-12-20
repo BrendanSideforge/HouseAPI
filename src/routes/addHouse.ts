@@ -8,7 +8,7 @@ const db: pg.Pool = database.pool;
 router.post('/:userId', async (req, res) => {
 
     let params: object = req.params;
-    let json: object = req.headers;
+    let json: object = req.body;
     let queryString: string = "SELECT * FROM users WHERE user_id=$1";
     let queryResults: any = await db.query(queryString, [+params['userId']]);
 

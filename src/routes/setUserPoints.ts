@@ -34,11 +34,11 @@ router.post('/:userId', async (req, res) => {
     }
 
     let updateQuery: string = "UPDATE users SET points=$2 WHERE user_id=$1";
-    await db.query(updateQuery, [+params['userId'], queryResults.rows[0]['points'] + +json['points']]);
+    await db.query(updateQuery, [+params['userId'], +json['points']]);
     res.send(JSON.stringify({
         user_id: +params['userId'],
         house: null,
-        points: queryResults.rows[0]['points'] + +json['points'],
+        points: +json['points'],
         joined_at: null
     }));
 

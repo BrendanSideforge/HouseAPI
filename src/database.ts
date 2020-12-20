@@ -9,7 +9,6 @@ export const pool: pg.Pool = new pg.Pool({
 });
 
 export async function createTables() {
-    
     let userDataQuery: string = `
         CREATE TABLE IF NOT EXISTS users (
             user_id bigint primary key,
